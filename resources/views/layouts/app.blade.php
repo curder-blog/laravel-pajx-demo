@@ -72,10 +72,21 @@
         </main>
     </div>
     <!-- JavaScripts -->
+    <link href="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
+    <script src="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
     <script>
         $(document).pjax('a', '.pjax-container');
+
+        $(document).on('pjax:start', function() {
+            NProgress.start();
+        });
+
+        $(document).on('pjax:end', function() {
+            NProgress.done();
+        });
+        
         $(document).on("pjax:timeout", function(event) {
             // 阻止超时导致链接跳转事件发生
             event.preventDefault()
