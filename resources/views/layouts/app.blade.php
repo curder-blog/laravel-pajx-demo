@@ -67,9 +67,19 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 pjax-container">
             @yield('content')
         </main>
     </div>
+    <!-- JavaScripts -->
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
+    <script>
+        $(document).pjax('a', '.pjax-container');
+        $(document).on("pjax:timeout", function(event) {
+            // 阻止超时导致链接跳转事件发生
+            event.preventDefault()
+        });
+    </script>
 </body>
 </html>
